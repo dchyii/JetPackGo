@@ -26,47 +26,55 @@ body {
 #sky {
   background-color: rgb(240, 252, 252);
   width: 800px;
-  height: 338px;
+  height: 350px;
   position: absolute;
 }
 
 #ground {
   background-color: rgb(13, 224, 143);
   width: 800px;
-  height: 112px;
+  height: 100px;
   position: absolute;
-  top: 338px;
+  top: 350px;
 }
 
 #hero {
   border-radius: 50%;
   background-color: yellow;
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   position: absolute;
-  margin-top: 258px;
-  margin-left: 80px;
+  margin-top: 20px; /*per jump 70px*/
+  margin-left: 100px;
 }
 
-.obstacle {
-  width: 80px;
-  height: 80px;
+.block {
+  width: 50px;
+  height: 50px;
   position: absolute;
-  margin-left: 400px;
+  margin-left: 120px;
 }
 
 .flying {
-  margin-top: 112px;
+  margin-top: 90px;
 }
 
-.ground {
-  margin-top: 258px;
+.flying2 {
+  margin-top: 160px;
 }
 
-.animal {
+.flying3 {
+  margin-top: 230px;
+}
+
+.flying4 {
+  margin-top: 300px;
+}
+
+.target {
   background-color: greenyellow;
 }
 
-.dragon {
+.obstacle {
   background-color: red;
 }
