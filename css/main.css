@@ -1,1 +1,72 @@
+* {
+  border: 1px solid gold;
+  vertical-align: baseline;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
 
+body {
+  margin: 0 auto;
+  width: 800px;
+}
+
+#header {
+  margin: 10px auto;
+}
+
+#gameContainer {
+  margin: 10px auto;
+  width: 800px;
+  height: 450px;
+  position: absolute;
+  overflow: visible; /*! to be changed later*/
+}
+
+#sky {
+  background-color: rgb(240, 252, 252);
+  width: 800px;
+  height: 338px;
+  position: absolute;
+}
+
+#ground {
+  background-color: rgb(13, 224, 143);
+  width: 800px;
+  height: 112px;
+  position: absolute;
+  top: 338px;
+}
+
+#hero {
+  border-radius: 50%;
+  background-color: yellow;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  margin-top: 258px;
+  margin-left: 80px;
+}
+
+.obstacle {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  margin-left: 400px;
+}
+
+.flying {
+  margin-top: 112px;
+}
+
+.ground {
+  margin-top: 258px;
+}
+
+.animal {
+  background-color: greenyellow;
+}
+
+.dragon {
+  background-color: red;
+}
