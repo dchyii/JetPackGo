@@ -17,6 +17,8 @@ const gameData = {
     health: 5,
     score: 0,
     posY: 300,
+    jumpHeight: 70,
+    fallRate: 5,
   },
   block: [new Block("obstacle"), new Block("target")],
   gameStats: {
@@ -26,7 +28,19 @@ const gameData = {
 };
 
 //* Controller Functions
+const jumpUp = (gameData) => {
+  const newPosY = (gameData.hero.posY -= gameData.hero.jumpHeight);
+  console.log(gameData.hero.posY);
+  return newPosY;
+};
 
+const fallDown = (gameData) => {
+  const newPosY = (gameData.hero.posY += gameData.hero.fallRate);
+  return newPosY;
+};
+
+// console.log("jump", jumpUp(gameData));
+// console.log("fall", fallDown(gameData));
 
 //* Cypress Testing Codes
 describe("Generate obstacle", () => {
