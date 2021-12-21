@@ -1,6 +1,7 @@
 //Render screen
 const renderHero = (hero) => {
-  const $hero = $("#hero").css("margin-top", `${hero.posY}px`);
+  const $hero = $("#hero");
+  $hero.css("margin-top", `${hero.posY}px`);
 };
 
 //! kiv for block first
@@ -16,8 +17,19 @@ const renderAll = (gameData) => {
 
 //Execute game code
 const main = () => {
-  // set html tags as variables
-  $("#hero").on("click", renderBlocks);
+  //render all on load
   renderAll(gameData);
+  // make hero jump
+  //! check out the keypress function
+  $("#ground").on("click", () => {
+    //limit jump function to activate at 160px
+    // if (gameData.hero.posY >= 160) {
+    jumpUp(gameData.hero);
+    // }
+  });
+
+  //make hero drop after jump
+  setInterval(fallDown, 50, gameData.hero);
 };
+
 $(main);

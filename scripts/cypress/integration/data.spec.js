@@ -17,7 +17,7 @@ const gameData = {
     health: 5,
     score: 0,
     posY: 300,
-    jumpHeight: 70,
+    jumpHeight: 140,
     fallRate: 5,
   },
   block: [new Block("obstacle"), new Block("target")],
@@ -28,14 +28,25 @@ const gameData = {
 };
 
 //* Controller Functions
-const jumpUp = (gameData) => {
-  const newPosY = (gameData.hero.posY -= gameData.hero.jumpHeight);
-  console.log(gameData.hero.posY);
+const jumpUp = (hero) => {
+  let newPosY = hero.posY;
+  if (hero.posY > 160) {
+    hero.posY -= hero.jumpHeight;
+    console.log("jump", newPosY);
+  } else {
+    hero.posY = 90;
+  }
+  renderHero(hero);
   return newPosY;
 };
 
-const fallDown = (gameData) => {
-  const newPosY = (gameData.hero.posY += gameData.hero.fallRate);
+const fallDown = (hero) => {
+  let newPosY = hero.posY;
+  if (hero.posY <= 298) {
+    hero.posY += hero.fallRate;
+    console.log("fall", newPosY);
+  }
+  renderHero(hero);
   return newPosY;
 };
 
