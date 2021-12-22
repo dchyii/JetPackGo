@@ -7,6 +7,8 @@ class Block {
     this.damage = damage[type];
     this.score = score[type];
     this.posY = Math.ceil(Math.random() * 210);
+    this.posX = 800;
+    this.scroll = 10;
   }
 }
 
@@ -22,12 +24,13 @@ const gameData = {
   },
   block: [new Block("obstacle"), new Block("target")],
   gameStats: {
-    scrollRate: 20,
+    scrollRate: 50,
     spawnRate: 2000,
   },
 };
 
 //* Controller Functions
+// make hero jump
 const jumpUp = (hero) => {
   if (hero.posY < 210 - hero.jumpHeight) {
     hero.posY += hero.jumpHeight / 2;
@@ -42,18 +45,25 @@ const jumpUp = (hero) => {
   renderHero(hero);
 };
 
+//make hero fall
 const fallDown = (hero) => {
-  // let newPosY = hero.posY;
   if (hero.posY >= hero.fallRate) {
     hero.posY -= hero.fallRate;
     console.log("fall", hero.posY);
   }
   renderHero(hero);
-  // return newPosY;
 };
 
-// console.log("jump", jumpUp(gameData));
-// console.log("fall", fallDown(gameData));
+//make blocks scroll left
+const scrollLeft = (block) => {
+  for (const obs of block) {
+    if (obs.posX > -60) {
+      obs.posX -= obs.scroll /*gameData.gameStats.scrollRate*/;
+      console.log("blockX", obs.posX);
+    }
+    renderBlocks(block);
+  }
+};
 
 //* Cypress Testing Codes
 describe("Generate obstacle", () => {
