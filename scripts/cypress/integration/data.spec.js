@@ -6,7 +6,7 @@ class Block {
     this.type = type;
     this.damage = damage[type];
     this.score = score[type];
-    this.posY = Math.ceil(Math.random() * 180) + 120;
+    this.posY = Math.ceil(Math.random() * 210);
   }
 }
 
@@ -16,9 +16,9 @@ const gameData = {
     name: "hero",
     health: 5,
     score: 0,
-    posY: 300,
-    jumpHeight: 140,
-    fallRate: 5,
+    posY: 0,
+    jumpHeight: 70,
+    fallRate: 10,
   },
   block: [new Block("obstacle"), new Block("target")],
   gameStats: {
@@ -29,25 +29,27 @@ const gameData = {
 
 //* Controller Functions
 const jumpUp = (hero) => {
-  let newPosY = hero.posY;
-  if (hero.posY > 160) {
-    hero.posY -= hero.jumpHeight;
-    console.log("jump", newPosY);
+  if (hero.posY < 210 - hero.jumpHeight) {
+    hero.posY += hero.jumpHeight / 2;
+    setTimeout(() => {
+      hero.posY += hero.jumpHeight / 2;
+    }, 25);
+    console.log("jump", hero.posY);
   } else {
-    hero.posY = 90;
+    hero.posY = 210;
+    console.log("max jump", hero.posY);
   }
   renderHero(hero);
-  return newPosY;
 };
 
 const fallDown = (hero) => {
-  let newPosY = hero.posY;
-  if (hero.posY <= 298) {
-    hero.posY += hero.fallRate;
-    console.log("fall", newPosY);
+  // let newPosY = hero.posY;
+  if (hero.posY >= hero.fallRate) {
+    hero.posY -= hero.fallRate;
+    console.log("fall", hero.posY);
   }
   renderHero(hero);
-  return newPosY;
+  // return newPosY;
 };
 
 // console.log("jump", jumpUp(gameData));

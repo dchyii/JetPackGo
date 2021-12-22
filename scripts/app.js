@@ -1,7 +1,7 @@
 //Render screen
 const renderHero = (hero) => {
   const $hero = $("#hero");
-  $hero.css("margin-top", `${hero.posY}px`);
+  $hero.css("bottom", `${hero.posY}px`);
 };
 
 //! kiv for block first
