@@ -33,10 +33,7 @@ const gameData = {
 // make hero jump
 const jumpUp = (hero) => {
   if (hero.posY < 210 - hero.jumpHeight) {
-    hero.posY += hero.jumpHeight / 2;
-    setTimeout(() => {
-      hero.posY += hero.jumpHeight / 2;
-    }, 25);
+    hero.posY += hero.jumpHeight;
     console.log("jump", hero.posY);
   } else {
     hero.posY = 210;
