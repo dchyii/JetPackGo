@@ -38,7 +38,21 @@ const main = () => {
   setInterval(fallDown, 50, gameData.hero);
 
   //make blocks scroll left
-  setInterval(scrollLeft, gameData.gameStats.scrollRate, gameData.block);
+  const scrollingBlocks = setInterval(
+    scrollLeft,
+    gameData.gameStats.scrollRate,
+    gameData.block
+  );
+  const generatingBlocks = setInterval(
+    generateBlocks,
+    gameData.gameStats.spawnRate,
+    gameData.block
+  );
+
+  // setTimeout(generateBlocks, 3000, gameData.block);
+  // setTimeout(generateBlocks, 6000, gameData.block);
+  // setTimeout(generateBlocks, 9000, gameData.block);
+
   // $("#hero").on("click", () => {
   //   scrollLeft(gameData);
   // });

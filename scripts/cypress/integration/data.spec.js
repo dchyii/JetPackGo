@@ -56,10 +56,21 @@ const scrollLeft = (block) => {
   for (const obs of block) {
     if (obs.posX > -60) {
       obs.posX -= obs.scroll /*gameData.gameStats.scrollRate*/;
-      console.log("blockX", obs.posX);
+      // console.log("blockX", obs.posX);
     }
-    renderBlocks(block);
   }
+  const newBlock = block.filter((block) => block.posX > -60);
+  block = newBlock;
+  renderBlocks(block);
+  return block;
+};
+
+//generate blocks
+const generateBlocks = (block) => {
+  const blockTypes = ["obstacle", "target"];
+  const randNum = Math.round(Math.random());
+  block.push(new Block(blockTypes[randNum]));
+  console.log(block.length);
 };
 
 //* Cypress Testing Codes
