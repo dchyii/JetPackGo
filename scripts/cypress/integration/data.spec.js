@@ -8,7 +8,7 @@ class Block {
     this.score = score[type];
     this.posY = Math.ceil(Math.random() * 210);
     this.posX = 800;
-    this.scroll = 10;
+    this.scrollPx = 10;
   }
 }
 
@@ -22,7 +22,7 @@ const gameData = {
     jumpHeight: 70,
     fallRate: 10,
   },
-  block: [new Block("obstacle"), new Block("target")],
+  block: [new Block("obstacle")],
   gameStats: {
     scrollRate: 50,
     spawnRate: 2000,
@@ -55,14 +55,10 @@ const fallDown = (hero) => {
 const scrollLeft = (block) => {
   for (const obs of block) {
     if (obs.posX > -60) {
-      obs.posX -= obs.scroll /*gameData.gameStats.scrollRate*/;
-      // console.log("blockX", obs.posX);
+      obs.posX -= obs.scrollPx;
     }
   }
-  const newBlock = block.filter((block) => block.posX > -60);
-  block = newBlock;
   renderBlocks(block);
-  return block;
 };
 
 //generate blocks
@@ -70,7 +66,9 @@ const generateBlocks = (block) => {
   const blockTypes = ["obstacle", "target"];
   const randNum = Math.round(Math.random());
   block.push(new Block(blockTypes[randNum]));
-  console.log(block.length);
+  if (block[0].posX === -60) {
+    block.shift();
+  }
 };
 
 //* Cypress Testing Codes
