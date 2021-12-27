@@ -21,6 +21,7 @@ const gameData = {
     posY: 0,
     jumpHeight: 70,
     fallRate: 10,
+    isJumping: false,
   },
   block: [new Block("obstacle")],
   gameStats: {
@@ -31,24 +32,66 @@ const gameData = {
 
 //* Controller Functions
 // make hero jump
-const jumpUp = (hero) => {
-  if (hero.posY < 210 - hero.jumpHeight) {
-    hero.posY += hero.jumpHeight;
-    console.log("jump", hero.posY);
-  } else {
-    hero.posY = 210;
-    console.log("max jump", hero.posY);
-  }
-  renderHero(hero);
-};
+//! current jump code
+// const jumpUp = (hero) => {
+// if (hero.posY < 210 - hero.jumpHeight) {
+//   hero.posY += hero.jumpHeight;
+//   console.log("jump", hero.posY);
+// } else {
+//   hero.posY = 210;
+//   console.log("max jump", hero.posY);
+// }
+
+//   renderHero(hero);
+// };
 
 //make hero fall
-const fallDown = (hero) => {
-  if (hero.posY >= hero.fallRate) {
-    hero.posY -= hero.fallRate;
-    console.log("fall", hero.posY);
+// const fallDown = (hero) => {
+//   if (hero.posY >= hero.fallRate) {
+//     hero.posY -= hero.fallRate;
+//     console.log("fall", hero.posY);
+//   }
+//   renderHero(hero);
+// };
+//! end of current jump code
+
+const jumpUp = (hero) => {
+  hero.isJumping = true;
+  if (hero.posY < 210 - hero.jumpHeight) {
+    hero.posY += hero.jumpHeight / 2;
+    renderHero(hero);
+    setTimeout(() => {
+      hero.posY += hero.jumpHeight / 2;
+      renderHero(hero);
+      setTimeout(() => {
+        hero.isJumping = false;
+        setTimeout(fall, 50, hero);
+      }, 50);
+    }, 50);
+  } else {
+    hero.posY = 210;
+    renderHero(hero);
+    setTimeout(() => {
+      hero.isJumping = false;
+      setTimeout(fall, 50, hero);
+    }, 50);
   }
-  renderHero(hero);
+};
+
+const fall = (hero) => {
+  if (!hero.isJumping) {
+    const heroFalling = setInterval(() => {
+      hero.posY -= hero.fallRate;
+      renderHero(hero);
+      if (hero.posY <= 0) {
+        clearInterval(heroFalling);
+        hero.posY = 0;
+        renderHero(hero);
+      } else if (hero.isJumping) {
+        clearInterval(heroFalling);
+      }
+    }, 50);
+  }
 };
 
 //make blocks scroll left

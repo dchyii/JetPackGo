@@ -35,7 +35,7 @@ const main = () => {
   });
 
   //make hero drop after jump
-  setInterval(fallDown, 50, gameData.hero);
+  //! setInterval(fallDown, 50, gameData.hero);
 
   //make blocks scroll left
   const scrollingBlocks = setInterval(
@@ -43,6 +43,7 @@ const main = () => {
     gameData.gameStats.scrollRate,
     gameData.block
   );
+  //! generate blocks code
   const generatingBlocks = setInterval(
     generateBlocks,
     gameData.gameStats.spawnRate,
