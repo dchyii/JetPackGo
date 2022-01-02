@@ -13,7 +13,6 @@ const renderBlocks = (block) => {
     $newBlock.css("bottom", `${obs.posY}px`);
     $newBlock.addClass(obs.type);
     $("#sky").append($newBlock);
-    // console.log($newBlock);
   }
 };
 
@@ -47,16 +46,14 @@ const main = () => {
     }
   });
 
-  //make hero drop after jump
-  //! setInterval(fallDown, 50, gameData.hero);
-
   //make blocks scroll left
   const scrollingBlocks = setInterval(
     scrollLeft,
     gameData.gameStats.scrollRate,
     gameData.block
   );
-  //! generate blocks code
+
+  // generate blocks code
   const generatingBlocks = setInterval(
     generateBlocks,
     gameData.gameStats.spawnRate,
@@ -69,13 +66,6 @@ const main = () => {
       clearInterval(generatingBlocks);
     }
   });
-  // setTimeout(generateBlocks, 3000, gameData.block);
-  // setTimeout(generateBlocks, 6000, gameData.block);
-  // setTimeout(generateBlocks, 9000, gameData.block);
-
-  // $("#hero").on("click", () => {
-  //   scrollLeft(gameData);
-  // });
 
   const hitTarget = setInterval(
     hitObstacle,
