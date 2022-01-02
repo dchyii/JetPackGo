@@ -27,6 +27,7 @@ const gameData = {
   gameStats: {
     scrollRate: 50,
     spawnRate: 2000,
+    isGameOver: false,
   },
 };
 
@@ -103,6 +104,9 @@ const hitObstacle = (gameData) => {
         gameData.hero.health -= 1;
         blk.type = "obstacle hit";
         renderHealth(gameData.hero);
+        if (gameData.hero.health === 0) {
+          gameOver(gameData);
+        }
       }
       if (blk.type === "target") {
         gameData.hero.score += 1;
@@ -111,6 +115,11 @@ const hitObstacle = (gameData) => {
       }
     }
   }
+};
+
+//game over
+const gameOver = (gameData) => {
+  gameData.gameStats.isGameOver = true;
 };
 
 //* Cypress Testing Codes

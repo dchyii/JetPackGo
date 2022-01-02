@@ -42,7 +42,9 @@ const main = () => {
   // make hero jump
   //! check out the keypress function
   $("#ground").on("click", () => {
-    jumpUp(gameData.hero);
+    if (!gameData.gameStats.isGameOver) {
+      jumpUp(gameData.hero);
+    }
   });
 
   //make hero drop after jump
@@ -61,6 +63,12 @@ const main = () => {
     gameData.block
   );
 
+  const stopGame = setInterval(() => {
+    if (gameData.gameStats.isGameOver) {
+      clearInterval(scrollingBlocks);
+      clearInterval(generatingBlocks);
+    }
+  });
   // setTimeout(generateBlocks, 3000, gameData.block);
   // setTimeout(generateBlocks, 6000, gameData.block);
   // setTimeout(generateBlocks, 9000, gameData.block);
