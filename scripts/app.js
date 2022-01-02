@@ -4,7 +4,6 @@ const renderHero = (hero) => {
   $hero.css("bottom", `${hero.posY}px`);
 };
 
-//! kiv for block first
 const renderBlocks = (block) => {
   $(".block").remove();
   for (const obs of block) {
@@ -18,9 +17,21 @@ const renderBlocks = (block) => {
   }
 };
 
+const renderHealth = (hero) => {
+  const $health = $("#health");
+  $health.text(hero.health);
+};
+
+const renderScore = (hero) => {
+  const $score = $("#score");
+  $score.text(hero.score);
+};
+
 const renderAll = (gameData) => {
   renderHero(gameData.hero);
   renderBlocks(gameData.block);
+  renderHealth(gameData.hero);
+  renderScore(gameData.hero);
 };
 
 //Execute game code

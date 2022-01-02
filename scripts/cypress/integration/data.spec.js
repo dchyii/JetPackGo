@@ -32,29 +32,6 @@ const gameData = {
 
 //* Controller Functions
 // make hero jump
-//! current jump code
-// const jumpUp = (hero) => {
-// if (hero.posY < 210 - hero.jumpHeight) {
-//   hero.posY += hero.jumpHeight;
-//   console.log("jump", hero.posY);
-// } else {
-//   hero.posY = 210;
-//   console.log("max jump", hero.posY);
-// }
-
-//   renderHero(hero);
-// };
-
-//make hero fall
-// const fallDown = (hero) => {
-//   if (hero.posY >= hero.fallRate) {
-//     hero.posY -= hero.fallRate;
-//     console.log("fall", hero.posY);
-//   }
-//   renderHero(hero);
-// };
-//! end of current jump code
-
 const jumpUp = (hero) => {
   hero.isJumping = true;
   if (hero.posY < 210 - hero.jumpHeight) {
