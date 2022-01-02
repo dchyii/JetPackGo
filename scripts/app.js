@@ -68,6 +68,12 @@ const main = () => {
   // $("#hero").on("click", () => {
   //   scrollLeft(gameData);
   // });
+
+  const hitTarget = setInterval(
+    hitObstacle,
+    gameData.gameStats.scrollRate,
+    gameData
+  );
 };
 
 $(main);

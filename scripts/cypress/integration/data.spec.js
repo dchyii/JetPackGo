@@ -76,6 +76,8 @@ const scrollLeft = (block) => {
   for (const obs of block) {
     if (obs.posX > -60) {
       obs.posX -= obs.scrollPx;
+    } else if (obs.posX === -60) {
+      block.splice(0, 1);
     }
   }
   renderBlocks(block);
@@ -86,8 +88,28 @@ const generateBlocks = (block) => {
   const blockTypes = ["obstacle", "target"];
   const randNum = Math.round(Math.random());
   block.push(new Block(blockTypes[randNum]));
-  if (block[0].posX === -60) {
-    block.shift();
+};
+
+//when hero hit obstacle
+const hitObstacle = (gameData) => {
+  for (const blk of gameData.block) {
+    if (
+      blk.posX > 100 &&
+      blk.posX < 160 &&
+      gameData.hero.posY <= blk.posY + 50 &&
+      gameData.hero.posY + 50 >= blk.posY
+    ) {
+      if (blk.type === "obstacle") {
+        gameData.hero.health -= 1;
+        blk.type = "obstacle hit";
+        renderHealth(gameData.hero);
+      }
+      if (blk.type === "target") {
+        gameData.hero.score += 1;
+        blk.type = "targetHit";
+        renderScore(gameData.hero);
+      }
+    }
   }
 };
 
