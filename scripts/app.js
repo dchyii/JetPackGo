@@ -46,6 +46,22 @@ const main = () => {
     }
   });
 
+  $("body").on("keypress", (event) => {
+    if (event.key == " ") {
+      if (!gameData.gameStats.isGameOver) {
+        jumpUp(gameData.hero);
+      }
+    }
+  });
+
+  // $("body").keyup((event) => {
+  //   if (event.keyCode == 32) {
+  //     if (!gameData.gameStats.isGameOver) {
+  //       jumpUp(gameData.hero);
+  //     }
+  //   }
+  // });
+
   //make blocks scroll left
   const scrollingBlocks = setInterval(
     scrollLeft,
