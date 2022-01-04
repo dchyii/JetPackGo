@@ -80,5 +80,7 @@ body {
 }
 
 .obstacle {
-  background-color: red;
+  /* background-color: red; */
+  background-image: url("/images/redgif.gif");
+  background-size: cover;
 }
