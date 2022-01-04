@@ -95,8 +95,8 @@ const generateBlocks = (block) => {
 const hitObstacle = (gameData) => {
   for (const blk of gameData.block) {
     if (
-      blk.posX > 100 &&
       blk.posX < 160 &&
+      blk.posX + 50 > 100 &&
       gameData.hero.posY <= blk.posY + 50 &&
       gameData.hero.posY + 50 >= blk.posY
     ) {
