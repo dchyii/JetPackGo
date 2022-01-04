@@ -33,11 +33,44 @@ const renderAll = (gameData) => {
   renderScore(gameData.hero);
 };
 
+//start game code
+const gameStart = (gameData) => {
+  //make blocks scroll left
+  const scrollingBlocks = setInterval(
+    scrollLeft,
+    gameData.gameStats.scrollRate,
+    gameData.block
+  );
+
+  // generate blocks code
+  const generatingBlocks = setInterval(
+    generateBlocks,
+    gameData.gameStats.spawnRate,
+    gameData.block
+  );
+
+  // hit obstacle or target code
+  const hitTarget = setInterval(
+    hitObstacle,
+    gameData.gameStats.scrollRate,
+    gameData
+  );
+
+  // clear intervals on game over
+  const stopGame = setInterval(() => {
+    if (gameData.gameStats.isGameOver) {
+      clearInterval(scrollingBlocks);
+      clearInterval(generatingBlocks);
+    }
+  }, 10);
+};
+
 //Execute game code
 const main = () => {
   //render all on load
   renderAll(gameData);
 
+  // start game
   $("body").on("keypress", (event) => {
     if (event.key === " " && gameData.gameStats.isGameStart === false) {
       gameData.gameStats.isGameStart = true;
@@ -45,49 +78,20 @@ const main = () => {
     }
   });
 
-  const gameStart = (gameData) => {
-    // make hero jump
-    $("#ground").on("click", () => {
+  // make hero jump
+  $("#ground").on("click", () => {
+    if (!gameData.gameStats.isGameOver) {
+      jumpUp(gameData.hero);
+    }
+  });
+
+  $("body").on("keypress", (event) => {
+    if (event.key === " ") {
       if (!gameData.gameStats.isGameOver) {
         jumpUp(gameData.hero);
       }
-    });
-
-    $("body").on("keypress", (event) => {
-      if (event.key === " ") {
-        if (!gameData.gameStats.isGameOver) {
-          jumpUp(gameData.hero);
-        }
-      }
-    });
-
-    //make blocks scroll left
-    const scrollingBlocks = setInterval(
-      scrollLeft,
-      gameData.gameStats.scrollRate,
-      gameData.block
-    );
-
-    // generate blocks code
-    const generatingBlocks = setInterval(
-      generateBlocks,
-      gameData.gameStats.spawnRate,
-      gameData.block
-    );
-
-    const stopGame = setInterval(() => {
-      if (gameData.gameStats.isGameOver) {
-        clearInterval(scrollingBlocks);
-        clearInterval(generatingBlocks);
-      }
-    }, 10);
-
-    const hitTarget = setInterval(
-      hitObstacle,
-      gameData.gameStats.scrollRate,
-      gameData
-    );
-  };
+    }
+  });
 };
 
 $(main);
