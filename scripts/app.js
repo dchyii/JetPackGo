@@ -35,17 +35,17 @@ const renderAll = (gameData) => {
 
 //start game code
 const gameStart = (gameData) => {
-  //make blocks scroll left
-  const scrollingBlocks = setInterval(
-    scrollLeft,
-    gameData.gameStats.scrollRate,
-    gameData.block
-  );
-
   // generate blocks code
   const generatingBlocks = setInterval(
     generateBlocks,
     gameData.gameStats.spawnRate,
+    gameData.block
+  );
+
+  //make blocks scroll left
+  const scrollingBlocks = setInterval(
+    scrollLeft,
+    gameData.gameStats.scrollRate,
     gameData.block
   );
 

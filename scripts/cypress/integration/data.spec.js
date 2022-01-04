@@ -23,7 +23,7 @@ const gameData = {
     fallRate: 10,
     isJumping: false,
   },
-  block: [new Block("obstacle")],
+  block: [],
   gameStats: {
     scrollRate: 50,
     spawnRate: 2000,
@@ -73,23 +73,23 @@ const fall = (hero) => {
   }
 };
 
-//make blocks scroll left
-const scrollLeft = (block) => {
-  for (const obs of block) {
-    if (obs.posX > -60) {
-      obs.posX -= obs.scrollPx;
-    } else if (obs.posX === -60) {
-      block.splice(0, 1);
-    }
-  }
-  renderBlocks(block);
-};
-
 //generate blocks
 const generateBlocks = (block) => {
   const blockTypes = ["obstacle", "target"];
   const randNum = Math.round(Math.random());
   block.push(new Block(blockTypes[randNum]));
+};
+
+//make blocks scroll left
+const scrollLeft = (block) => {
+  for (const obs of block) {
+    if (obs.posX > -60) {
+      obs.posX -= obs.scrollPx;
+    } else if (obs.posX <= -60) {
+      block.splice(0, 1);
+    }
+  }
+  renderBlocks(block);
 };
 
 //when hero hit obstacle
