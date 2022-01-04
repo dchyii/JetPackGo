@@ -1,8 +1,8 @@
 //* Generate obstacles
 class Block {
   constructor(type) {
-    const damage = { obstacle: -1, target: 0 };
-    const score = { obstacle: 0, target: 10 };
+    const damage = { obstacle: 1, target: 0 };
+    const score = { obstacle: 0, target: 1 };
     this.type = type;
     this.damage = damage[type];
     this.score = score[type];
@@ -102,7 +102,7 @@ const hitObstacle = (gameData) => {
       gameData.hero.posY + 50 >= blk.posY
     ) {
       if (blk.type === "obstacle") {
-        gameData.hero.health -= 1;
+        gameData.hero.health -= blk.damage;
         blk.type = "obstacle hit";
         renderHealth(gameData.hero);
         if (gameData.hero.health === 0) {
@@ -110,7 +110,7 @@ const hitObstacle = (gameData) => {
         }
       }
       if (blk.type === "target") {
-        gameData.hero.score += 1;
+        gameData.hero.score += blk.score;
         blk.type = "targetHit";
         renderScore(gameData.hero);
       }
