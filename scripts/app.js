@@ -39,7 +39,6 @@ const main = () => {
   renderAll(gameData);
 
   // make hero jump
-  //! check out the keypress function
   $("#ground").on("click", () => {
     if (!gameData.gameStats.isGameOver) {
       jumpUp(gameData.hero);
@@ -53,14 +52,6 @@ const main = () => {
       }
     }
   });
-
-  // $("body").keyup((event) => {
-  //   if (event.keyCode == 32) {
-  //     if (!gameData.gameStats.isGameOver) {
-  //       jumpUp(gameData.hero);
-  //     }
-  //   }
-  // });
 
   //make blocks scroll left
   const scrollingBlocks = setInterval(
@@ -81,7 +72,7 @@ const main = () => {
       clearInterval(scrollingBlocks);
       clearInterval(generatingBlocks);
     }
-  });
+  }, 10);
 
   const hitTarget = setInterval(
     hitObstacle,
