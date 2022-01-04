@@ -92,6 +92,13 @@ const main = () => {
       }
     }
   });
+
+  $("body").on("keypress", (event) => {
+    if (event.key === " " && gameData.gameStats.isGameOver) {
+      resetGame(gameData);
+      renderAll(gameData);
+    }
+  });
 };
 
 $(main);

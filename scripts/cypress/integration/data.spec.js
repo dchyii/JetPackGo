@@ -16,7 +16,7 @@ class Block {
 const gameData = {
   hero: {
     name: "hero",
-    health: 5,
+    health: 1,
     score: 0,
     posY: 0,
     jumpHeight: 70,
@@ -29,6 +29,11 @@ const gameData = {
     spawnRate: 2000,
     isGameStart: false,
     isGameOver: false,
+  },
+  defaultValues: {
+    health: 5,
+    score: 0,
+    posY: 0,
   },
 };
 
@@ -121,6 +126,16 @@ const hitObstacle = (gameData) => {
 //game over
 const gameOver = (gameData) => {
   gameData.gameStats.isGameOver = true;
+};
+
+//reset game
+const resetGame = (gameData) => {
+  gameData.hero.health = gameData.defaultValues.health;
+  gameData.hero.score = gameData.defaultValues.score;
+  gameData.hero.posY = gameData.defaultValues.posY;
+  gameData.gameStats.isGameStart = false;
+  gameData.gameStats.isGameOver = false;
+  gameData.block = [];
 };
 
 //* Cypress Testing Codes
