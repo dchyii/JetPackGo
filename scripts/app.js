@@ -38,47 +38,56 @@ const main = () => {
   //render all on load
   renderAll(gameData);
 
-  // make hero jump
-  $("#ground").on("click", () => {
-    if (!gameData.gameStats.isGameOver) {
-      jumpUp(gameData.hero);
+  $("body").on("keypress", (event) => {
+    if (event.key === " " && gameData.gameStats.isGameStart === false) {
+      gameData.gameStats.isGameStart = true;
+      gameStart(gameData);
     }
   });
 
-  $("body").on("keypress", (event) => {
-    if (event.key == " ") {
+  const gameStart = (gameData) => {
+    // make hero jump
+    $("#ground").on("click", () => {
       if (!gameData.gameStats.isGameOver) {
         jumpUp(gameData.hero);
       }
-    }
-  });
+    });
 
-  //make blocks scroll left
-  const scrollingBlocks = setInterval(
-    scrollLeft,
-    gameData.gameStats.scrollRate,
-    gameData.block
-  );
+    $("body").on("keypress", (event) => {
+      if (event.key === " ") {
+        if (!gameData.gameStats.isGameOver) {
+          jumpUp(gameData.hero);
+        }
+      }
+    });
 
-  // generate blocks code
-  const generatingBlocks = setInterval(
-    generateBlocks,
-    gameData.gameStats.spawnRate,
-    gameData.block
-  );
+    //make blocks scroll left
+    const scrollingBlocks = setInterval(
+      scrollLeft,
+      gameData.gameStats.scrollRate,
+      gameData.block
+    );
 
-  const stopGame = setInterval(() => {
-    if (gameData.gameStats.isGameOver) {
-      clearInterval(scrollingBlocks);
-      clearInterval(generatingBlocks);
-    }
-  }, 10);
+    // generate blocks code
+    const generatingBlocks = setInterval(
+      generateBlocks,
+      gameData.gameStats.spawnRate,
+      gameData.block
+    );
 
-  const hitTarget = setInterval(
-    hitObstacle,
-    gameData.gameStats.scrollRate,
-    gameData
-  );
+    const stopGame = setInterval(() => {
+      if (gameData.gameStats.isGameOver) {
+        clearInterval(scrollingBlocks);
+        clearInterval(generatingBlocks);
+      }
+    }, 10);
+
+    const hitTarget = setInterval(
+      hitObstacle,
+      gameData.gameStats.scrollRate,
+      gameData
+    );
+  };
 };
 
 $(main);

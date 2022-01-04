@@ -27,6 +27,7 @@ const gameData = {
   gameStats: {
     scrollRate: 50,
     spawnRate: 2000,
+    isGameStart: false,
     isGameOver: false,
   },
 };
