@@ -156,6 +156,14 @@ const main = () => {
     }
   });
 
+  $("#ground").on("click", () => {
+    if (gameData.gameStats.isGameStart === false) {
+      gameData.gameStats.isGameStart = true;
+      hideIntro();
+      gameStart(gameData);
+    }
+  });
+
   // make hero jump
   $("#ground").on("click", () => {
     if (!gameData.gameStats.isGameOver) {
@@ -174,6 +182,15 @@ const main = () => {
   //reset game after game over
   $("body").on("keydown", (event) => {
     if (event.key === " " && gameData.gameStats.isGameOver) {
+      resetGame(gameData);
+      renderAll(gameData);
+      hideGameOver();
+      showIntro();
+    }
+  });
+
+  $("#ground").on("click", () => {
+    if (gameData.gameStats.isGameOver) {
       resetGame(gameData);
       renderAll(gameData);
       hideGameOver();
