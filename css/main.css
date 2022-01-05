@@ -84,3 +84,16 @@ body {
   background-image: url("/images/redgif.gif");
   background-size: cover;
 }
+
+#gameOver {
+  width: 80%;
+  height: 80%;
+  border: lightblue 1px solid;
+  background-color: lightcyan;
+  position: relative;
+  z-index: 2;
+}
+
+#gameOver h3 {
+  margin-top: 50px;
+}
