@@ -118,14 +118,12 @@ const showIntro = () => {
 
 //hide game over screen
 const hideGameOver = () => {
-  const $screenGameOver = $("#gameOver");
-  $screenGameOver.addClass("hide");
+  $("#gameOver").addClass("hide");
 };
 
 //show game over screen
 const showGameOver = () => {
-  const $screenGameOver = $("#gameOver");
-  $screenGameOver.removeClass("hide");
+  $("#gameOver").removeClass("hide");
 };
 
 //Execute game code
