@@ -87,6 +87,24 @@ const gameStart = (gameData) => {
   }, 10);
 };
 
+//get player name
+const getName = (hero) => {
+  const $playerName = $("#playerName").val();
+  if ($playerName) {
+    hero.name = $playerName;
+  }
+};
+
+//hide input name
+const hideInputName = () => {
+  $("#inputName").addClass("hide");
+};
+
+//show input name
+const showInputName = () => {
+  $("#inputName").removeClass("hide");
+};
+
 //hide intro screen
 const hideIntro = () => {
   $("#intro").addClass("hide");
@@ -95,6 +113,7 @@ const hideIntro = () => {
 //show intro screen
 const showIntro = () => {
   $("#intro").removeClass("hide");
+  $("#name").text(gameData.hero.name);
 };
 
 //hide game over screen
@@ -113,6 +132,13 @@ const showGameOver = () => {
 const main = () => {
   //render all on load
   renderAll(gameData);
+
+  //get player name
+  $("#submitButton").on("click", () => {
+    getName(gameData.hero);
+    hideInputName();
+    showIntro();
+  });
 
   // start game
   $("body").on("keypress", (event) => {
