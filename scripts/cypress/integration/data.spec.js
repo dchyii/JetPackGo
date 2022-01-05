@@ -16,7 +16,7 @@ class Block {
 const gameData = {
   hero: {
     name: "Hero",
-    health: 1,
+    health: 5,
     score: 0,
     posY: 0,
     jumpHeight: 70,
@@ -31,7 +31,7 @@ const gameData = {
     isGameOver: false,
   },
   defaultValues: {
-    health: 2,
+    health: 5,
     score: 0,
     posY: 0,
   },
