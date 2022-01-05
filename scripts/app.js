@@ -138,6 +138,14 @@ const main = () => {
     showIntro();
   });
 
+  $("#inputName").on("keydown", (event) => {
+    if (event.key === "Enter") {
+      getName(gameData.hero);
+      hideInputName();
+      showIntro();
+    }
+  });
+
   // start game
   $("body").on("keydown", (event) => {
     if (event.key === " " && gameData.gameStats.isGameStart === false) {
