@@ -98,6 +98,10 @@ body {
   margin-top: 25px;
 }
 
+#inputName input {
+  margin-top: 15px;
+}
+
 #intro p {
   margin-top: 15px;
   /* font-size: 1.5em; */
