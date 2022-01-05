@@ -83,6 +83,16 @@ const gameStart = (gameData) => {
   }, 10);
 };
 
+//hide intro screen
+const hideIntro = () => {
+  $("#intro").addClass("hide");
+};
+
+//show intro screen
+const showIntro = () => {
+  $("#intro").removeClass("hide");
+};
+
 //hide game over screen
 const hideGameOver = () => {
   const $screenGameOver = $("#gameOver");
@@ -104,6 +114,7 @@ const main = () => {
   $("body").on("keypress", (event) => {
     if (event.key === " " && gameData.gameStats.isGameStart === false) {
       gameData.gameStats.isGameStart = true;
+      hideIntro();
       gameStart(gameData);
     }
   });
@@ -128,6 +139,7 @@ const main = () => {
       resetGame(gameData);
       renderAll(gameData);
       hideGameOver();
+      showIntro();
     }
   });
 };
