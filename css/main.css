@@ -1,5 +1,5 @@
 * {
-  border: 1px solid gold;
+  /* border: 1px solid gold; */
   vertical-align: baseline;
   margin: 0 auto;
   padding: 0;
@@ -98,7 +98,7 @@ body {
   margin-top: 25px;
 }
 
-.screen p {
+#intro p {
   margin-top: 15px;
   /* font-size: 1.5em; */
 }

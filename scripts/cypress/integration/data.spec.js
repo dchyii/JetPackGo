@@ -146,6 +146,7 @@ const gameOver = (gameData) => {
       }
     }
   }
+  renderGameScore(gameData.hero);
   renderHighScores(gameData.highScores);
 };
 

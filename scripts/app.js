@@ -26,6 +26,10 @@ const renderScore = (hero) => {
   $score.text(hero.score);
 };
 
+const renderGameScore = (hero) => {
+  $("#gameScore").text(hero.score);
+};
+
 const renderHighScores = (highScores) => {
   const $highScores = $("#highScores");
   $highScores.children().remove();
