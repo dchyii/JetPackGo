@@ -26,6 +26,19 @@ const renderScore = (hero) => {
   $score.text(hero.score);
 };
 
+const renderHighScores = (highScores) => {
+  const $highScores = $("#highScores");
+  $highScores.children().remove();
+  for (const score of highScores) {
+    const key = Object.keys(score);
+    if (score[key]) {
+      const $row = $("<p>");
+      $row.text(`${key}: ${score[key]}`);
+      $highScores.append($row);
+    }
+  }
+};
+
 const renderAll = (gameData) => {
   renderHero(gameData.hero);
   renderBlocks(gameData.block);

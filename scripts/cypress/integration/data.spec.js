@@ -17,7 +17,7 @@ const gameData = {
   hero: {
     name: "hero",
     health: 1,
-    score: 0,
+    score: 21,
     posY: 0,
     jumpHeight: 70,
     fallRate: 10,
@@ -35,6 +35,7 @@ const gameData = {
     score: 0,
     posY: 0,
   },
+  highScores: [{}, {}, {}],
 };
 
 //* Controller Functions
@@ -126,6 +127,27 @@ const hitObstacle = (gameData) => {
 //game over
 const gameOver = (gameData) => {
   gameData.gameStats.isGameOver = true;
+  let currentName = gameData.hero.name;
+  let currentScore = gameData.hero.score;
+  //iterate through the 3 highest score
+  for (let i = 0; i < 3; i++) {
+    const obj = gameData.highScores[i];
+    const key = Object.keys(obj);
+    const val = obj[key];
+    //enter code if this placing is not defined
+    //or if current score is higher than this placing
+    if (currentScore >= val || !val) {
+      if (currentScore) {
+        delete obj[key];
+        obj[currentName] = currentScore;
+        //assign displaced score to compare with next row
+        currentName = key;
+        currentScore = val;
+        console.log("inside", currentName, currentScore);
+      }
+    }
+  }
+  renderHighScores(gameData.highScores);
 };
 
 //reset game
