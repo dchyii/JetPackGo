@@ -139,7 +139,7 @@ const main = () => {
   });
 
   // start game
-  $("body").on("keypress", (event) => {
+  $("body").on("keydown", (event) => {
     if (event.key === " " && gameData.gameStats.isGameStart === false) {
       gameData.gameStats.isGameStart = true;
       hideIntro();
@@ -154,7 +154,7 @@ const main = () => {
     }
   });
 
-  $("body").on("keypress", (event) => {
+  $("body").on("keydown", (event) => {
     if (event.key === " ") {
       if (!gameData.gameStats.isGameOver) {
         jumpUp(gameData.hero);
@@ -162,7 +162,7 @@ const main = () => {
     }
   });
 
-  $("body").on("keypress", (event) => {
+  $("body").on("keydown", (event) => {
     if (event.key === " " && gameData.gameStats.isGameOver) {
       resetGame(gameData);
       renderAll(gameData);

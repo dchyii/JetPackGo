@@ -15,7 +15,7 @@ class Block {
 //* Main Game Data
 const gameData = {
   hero: {
-    name: "hero",
+    name: "Hero",
     health: 1,
     score: 0,
     posY: 0,
