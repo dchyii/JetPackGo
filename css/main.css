@@ -86,8 +86,8 @@ body {
 }
 
 #gameOver {
-  width: 80%;
-  height: 80%;
+  width: 60%;
+  height: 70%;
   border: lightblue 1px solid;
   background-color: lightcyan;
   position: relative;
@@ -95,5 +95,9 @@ body {
 }
 
 #gameOver h3 {
-  margin-top: 50px;
+  margin-top: 25px;
+}
+
+.hide {
+  display: none;
 }

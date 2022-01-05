@@ -48,6 +48,9 @@ const renderAll = (gameData) => {
 
 //start game code
 const gameStart = (gameData) => {
+  //hide screens
+  hideGameOver();
+
   // generate blocks code
   const generatingBlocks = setInterval(
     generateBlocks,
@@ -74,8 +77,22 @@ const gameStart = (gameData) => {
     if (gameData.gameStats.isGameOver) {
       clearInterval(scrollingBlocks);
       clearInterval(generatingBlocks);
+      showGameOver();
+      clearInterval(stopGame);
     }
   }, 10);
+};
+
+//hide game over screen
+const hideGameOver = () => {
+  const $screenGameOver = $("#gameOver");
+  $screenGameOver.addClass("hide");
+};
+
+//show game over screen
+const showGameOver = () => {
+  const $screenGameOver = $("#gameOver");
+  $screenGameOver.removeClass("hide");
 };
 
 //Execute game code
@@ -110,6 +127,7 @@ const main = () => {
     if (event.key === " " && gameData.gameStats.isGameOver) {
       resetGame(gameData);
       renderAll(gameData);
+      hideGameOver();
     }
   });
 };

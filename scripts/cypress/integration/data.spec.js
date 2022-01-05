@@ -31,7 +31,7 @@ const gameData = {
     isGameOver: false,
   },
   defaultValues: {
-    health: 5,
+    health: 2,
     score: 0,
     posY: 0,
   },
