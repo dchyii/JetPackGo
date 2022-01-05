@@ -31,7 +31,7 @@ const renderHighScores = (highScores) => {
   $highScores.children().remove();
   for (const score of highScores) {
     const key = Object.keys(score);
-    if (score[key]) {
+    if (score[key] >= 0) {
       const $row = $("<p>");
       $row.text(`${key}: ${score[key]}`);
       $highScores.append($row);

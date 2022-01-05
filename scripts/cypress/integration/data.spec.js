@@ -17,7 +17,7 @@ const gameData = {
   hero: {
     name: "hero",
     health: 1,
-    score: 21,
+    score: 0,
     posY: 0,
     jumpHeight: 70,
     fallRate: 10,
@@ -137,13 +137,12 @@ const gameOver = (gameData) => {
     //enter code if this placing is not defined
     //or if current score is higher than this placing
     if (currentScore >= val || !val) {
-      if (currentScore) {
+      if (currentScore >= 0) {
         delete obj[key];
         obj[currentName] = currentScore;
         //assign displaced score to compare with next row
         currentName = key;
         currentScore = val;
-        console.log("inside", currentName, currentScore);
       }
     }
   }
