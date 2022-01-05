@@ -103,6 +103,7 @@ const hideInputName = () => {
 //show input name
 const showInputName = () => {
   $("#inputName").removeClass("hide");
+  $("#playerName").val("");
 };
 
 //hide intro screen
@@ -170,12 +171,23 @@ const main = () => {
     }
   });
 
+  //reset game after game over
   $("body").on("keydown", (event) => {
     if (event.key === " " && gameData.gameStats.isGameOver) {
       resetGame(gameData);
       renderAll(gameData);
       hideGameOver();
       showIntro();
+    }
+  });
+
+  //change player
+  $("body").on("keydown", (event) => {
+    if (event.key === "Escape" && gameData.gameStats.isGameOver) {
+      resetGame(gameData);
+      renderAll(gameData);
+      hideGameOver();
+      showInputName();
     }
   });
 };
