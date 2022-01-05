@@ -52,9 +52,6 @@ const renderAll = (gameData) => {
 
 //start game code
 const gameStart = (gameData) => {
-  //hide screens
-  hideGameOver();
-
   // generate blocks code
   const generatingBlocks = setInterval(
     generateBlocks,
