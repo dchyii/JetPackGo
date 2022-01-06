@@ -60,9 +60,18 @@ const gameStart = (gameData) => {
   // );
 
   const generateBlocksInt = () => {
-    // if (gameData.block[gameData.block.length - 1]["posX"] <= 700) {
-    generateBlocks(gameData.block);
-    // }
+    const blockArr = gameData.block;
+    const blockArrLength = blockArr.length;
+    const currentSpawnRate = gameData.gameStats.spawnRate;
+    const scrollRate = gameData.gameStats.scrollRate;
+
+    if (
+      blockArrLength === 0 ||
+      blockArr[blockArrLength - 1]["posX"] <=
+        800 - (currentSpawnRate / scrollRate) * 10
+    ) {
+      generateBlocks(gameData.block);
+    }
     if (!gameData.gameStats.isGameOver) {
       setTimeout(generateBlocksInt, gameData.gameStats.spawnRate);
     }

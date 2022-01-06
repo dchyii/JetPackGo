@@ -26,7 +26,7 @@ const gameData = {
   block: [],
   gameStats: {
     scrollRate: 50,
-    spawnRate: 1000,
+    spawnRate: 1500,
     isGameStart: false,
     isGameOver: false,
   },
@@ -34,7 +34,7 @@ const gameData = {
     health: 1,
     score: 0,
     posY: 0,
-    spawnRate: 1000,
+    spawnRate: 1500,
   },
   highScores: [{}, {}, {}],
 };
@@ -85,6 +85,25 @@ const generateBlocks = (block) => {
   const blockTypes = ["obstacle", "target"];
   const randNum = Math.round(Math.random());
   block.push(new Block(blockTypes[randNum]));
+  console.log("spawn", gameData.gameStats.spawnRate);
+};
+
+const generateBlocksInt = () => {
+  const blockArr = gameData.block;
+  const blockArrLength = blockArr.length;
+  const currentSpawnRate = gameData.gameStats.spawnRate;
+  const scrollRate = gameData.gameStats.scrollRate;
+
+  if (
+    blockArrLength === 0 ||
+    blockArr[blockArrLength - 1]["posX"] <=
+      800 - (currentSpawnRate / scrollRate) * 10
+  ) {
+    generateBlocks(gameData.block);
+  }
+  if (!gameData.gameStats.isGameOver) {
+    setTimeout(generateBlocksInt, gameData.gameStats.spawnRate);
+  }
 };
 
 //make blocks scroll left
