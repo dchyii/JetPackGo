@@ -2,6 +2,15 @@
 const renderHero = (hero) => {
   const $hero = $("#hero");
   $hero.css("bottom", `${hero.posY}px`);
+  if (hero.health === 0) {
+    $hero.removeClass("run fly").addClass("still");
+  } else if (hero.posY === 0) {
+    $hero.removeClass("still fly").addClass("run");
+  } else if (hero.isJumping) {
+    $hero.removeClass("still run").addClass("fly");
+  } else if (!hero.isJumping && hero.posY > 0) {
+    $hero.removeClass("run fly").addClass("still");
+  }
 };
 
 const renderBlocks = (block) => {
