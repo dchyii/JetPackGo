@@ -34,6 +34,7 @@ const gameData = {
     health: 1,
     score: 0,
     posY: 0,
+    spawnRate: 1000,
   },
   highScores: [{}, {}, {}],
 };
@@ -120,6 +121,7 @@ const hitObstacle = (gameData) => {
         blk.type = "targetHit";
         if (gameData.gameStats.spawnRate > 500) {
           gameData.gameStats.spawnRate -= 50;
+          console.log(gameData.gameStats.spawnRate);
         }
         renderScore(gameData.hero);
       }
@@ -160,6 +162,7 @@ const resetGame = (gameData) => {
   gameData.hero.posY = gameData.defaultValues.posY;
   gameData.gameStats.isGameStart = false;
   gameData.gameStats.isGameOver = false;
+  gameData.gameStats.spawnRate = gameData.defaultValues.spawnRate;
   gameData.block = [];
 };
 
