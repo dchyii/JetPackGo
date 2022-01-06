@@ -53,11 +53,22 @@ const renderAll = (gameData) => {
 //start game code
 const gameStart = (gameData) => {
   // generate blocks code
-  const generatingBlocks = setInterval(
-    generateBlocks,
-    gameData.gameStats.spawnRate,
-    gameData.block
-  );
+  // const generatingBlocks = setInterval(
+  //   generateBlocks,
+  //   gameData.gameStats.spawnRate,
+  //   gameData.block
+  // );
+
+  const generateBlocksInt = () => {
+    // if (gameData.block[gameData.block.length - 1]["posX"] <= 700) {
+    generateBlocks(gameData.block);
+    // }
+    if (!gameData.gameStats.isGameOver) {
+      setTimeout(generateBlocksInt, gameData.gameStats.spawnRate);
+    }
+  };
+
+  generateBlocksInt();
 
   //make blocks scroll left
   const scrollingBlocks = setInterval(
@@ -77,7 +88,8 @@ const gameStart = (gameData) => {
   const stopGame = setInterval(() => {
     if (gameData.gameStats.isGameOver) {
       clearInterval(scrollingBlocks);
-      clearInterval(generatingBlocks);
+      // clearInterval(generatingBlocks);
+      clearInterval(hitTarget);
       showGameOver();
       clearInterval(stopGame);
     }

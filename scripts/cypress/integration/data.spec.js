@@ -16,7 +16,7 @@ class Block {
 const gameData = {
   hero: {
     name: "Hero",
-    health: 5,
+    health: 1,
     score: 0,
     posY: 0,
     jumpHeight: 70,
@@ -26,12 +26,12 @@ const gameData = {
   block: [],
   gameStats: {
     scrollRate: 50,
-    spawnRate: 2000,
+    spawnRate: 1000,
     isGameStart: false,
     isGameOver: false,
   },
   defaultValues: {
-    health: 5,
+    health: 1,
     score: 0,
     posY: 0,
   },
@@ -118,6 +118,9 @@ const hitObstacle = (gameData) => {
       if (blk.type === "target") {
         gameData.hero.score += blk.score;
         blk.type = "targetHit";
+        if (gameData.gameStats.spawnRate > 500) {
+          gameData.gameStats.spawnRate -= 50;
+        }
         renderScore(gameData.hero);
       }
     }
