@@ -1,5 +1,4 @@
 * {
-  /* border: 1px solid gold; */
   vertical-align: baseline;
   margin: 0 auto;
   padding: 0;
@@ -17,10 +16,12 @@ body {
 
 #gameContainer {
   margin: 10px auto;
+  border: black 0.5px solid;
+
   width: 800px;
   height: 450px;
   position: absolute;
-  overflow: visible; /*! to be changed later*/
+  overflow: hidden;
 }
 
 #sky {
@@ -39,14 +40,9 @@ body {
 }
 
 #hero {
-  /* border-radius: 50%; */
-  /* background-color: yellow; */
-  /* background-image: url("/images/heroflygif.gif"); */
-  /* background-size: cover; */
   width: 50px;
   height: 50px;
   position: absolute;
-  /* bottom: 0px; */
   left: 100px;
 }
 
@@ -69,21 +65,19 @@ body {
   width: 50px;
   height: 50px;
   position: absolute;
-  /* left: 200px; */
 }
 
 .gameStats {
   text-align: right;
+  margin-right: 5px;
 }
 
 .target {
-  /* background-color: greenyellow; */
   background-image: url("/images/pointgif.gif");
   background-size: cover;
 }
 
 .obstacle {
-  /* background-color: red; */
   background-image: url("/images/redgif.gif");
   background-size: cover;
 }
@@ -107,7 +101,6 @@ body {
 
 #intro p {
   margin-top: 15px;
-  /* font-size: 1.5em; */
 }
 
 .instruction {
