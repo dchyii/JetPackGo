@@ -144,6 +144,7 @@ const main = () => {
   $("body").on("keydown", (event) => {
     if (event.key === " " && gameData.gameStats.isGameStart === false) {
       gameData.gameStats.isGameStart = true;
+      hideInputName();
       hideIntro();
       gameStart(gameData);
     }
@@ -152,6 +153,7 @@ const main = () => {
   $("#ground").on("click", () => {
     if (gameData.gameStats.isGameStart === false) {
       gameData.gameStats.isGameStart = true;
+      hideInputName();
       hideIntro();
       gameStart(gameData);
     }
