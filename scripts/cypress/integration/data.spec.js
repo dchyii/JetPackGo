@@ -16,7 +16,7 @@ class Block {
 const gameData = {
   hero: {
     name: "Hero",
-    health: 1,
+    health: 5,
     score: 0,
     posY: 0,
     jumpHeight: 70,
@@ -31,7 +31,7 @@ const gameData = {
     isGameOver: false,
   },
   defaultValues: {
-    health: 1,
+    health: 5,
     score: 0,
     posY: 0,
     spawnRate: 1500,
@@ -85,7 +85,6 @@ const generateBlocks = (block) => {
   const blockTypes = ["obstacle", "target"];
   const randNum = Math.round(Math.random());
   block.push(new Block(blockTypes[randNum]));
-  console.log("spawn", gameData.gameStats.spawnRate);
 };
 
 const generateBlocksInt = () => {
@@ -140,7 +139,6 @@ const hitObstacle = (gameData) => {
         blk.type = "targetHit";
         if (gameData.gameStats.spawnRate > 500) {
           gameData.gameStats.spawnRate -= 50;
-          console.log(gameData.gameStats.spawnRate);
         }
         renderScore(gameData.hero);
       }
