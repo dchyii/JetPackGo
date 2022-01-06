@@ -185,7 +185,7 @@ const main = () => {
 
   //reset game after game over
   $("body").on("keydown", (event) => {
-    if (event.key === " " && gameData.gameStats.isGameOver) {
+    if (event.key === "Enter" && gameData.gameStats.isGameOver) {
       resetGame(gameData);
       renderAll(gameData);
       hideGameOver();
