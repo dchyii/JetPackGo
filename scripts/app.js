@@ -127,6 +127,34 @@ const hideGameOver = () => {
 //show game over screen
 const showGameOver = () => {
   $("#gameOver").removeClass("hide");
+  //reset game after game over
+  $("body").on("keydown", (event) => {
+    if (event.key === "Enter" && gameData.gameStats.isGameOver) {
+      resetGame(gameData);
+      renderAll(gameData);
+      hideGameOver();
+      showIntro();
+    }
+  });
+
+  $("#ground").on("click", () => {
+    if (gameData.gameStats.isGameOver) {
+      resetGame(gameData);
+      renderAll(gameData);
+      hideGameOver();
+      showIntro();
+    }
+  });
+
+  //change player
+  $("body").on("keydown", (event) => {
+    if (event.key === "Escape" && gameData.gameStats.isGameOver) {
+      resetGame(gameData);
+      renderAll(gameData);
+      hideGameOver();
+      showInputName();
+    }
+  });
 };
 
 //Execute game code
@@ -180,35 +208,6 @@ const main = () => {
       if (!gameData.gameStats.isGameOver) {
         jumpUp(gameData.hero);
       }
-    }
-  });
-
-  //reset game after game over
-  $("body").on("keydown", (event) => {
-    if (event.key === "Enter" && gameData.gameStats.isGameOver) {
-      resetGame(gameData);
-      renderAll(gameData);
-      hideGameOver();
-      showIntro();
-    }
-  });
-
-  $("#ground").on("click", () => {
-    if (gameData.gameStats.isGameOver) {
-      resetGame(gameData);
-      renderAll(gameData);
-      hideGameOver();
-      showIntro();
-    }
-  });
-
-  //change player
-  $("body").on("keydown", (event) => {
-    if (event.key === "Escape" && gameData.gameStats.isGameOver) {
-      resetGame(gameData);
-      renderAll(gameData);
-      hideGameOver();
-      showInputName();
     }
   });
 };
