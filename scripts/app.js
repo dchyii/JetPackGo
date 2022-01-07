@@ -130,6 +130,7 @@ const showGameOver = () => {
   //reset game after game over
   $("body").on("keydown", (event) => {
     if (event.key === "Enter" && gameData.gameStats.isGameOver) {
+      event.preventDefault();
       resetGame(gameData);
       renderAll(gameData);
       hideGameOver();
@@ -137,7 +138,8 @@ const showGameOver = () => {
     }
   });
 
-  $("#ground").on("click", () => {
+  $("#ground").on("click", (event) => {
+    event.preventDefault();
     if (gameData.gameStats.isGameOver) {
       resetGame(gameData);
       renderAll(gameData);
@@ -149,6 +151,7 @@ const showGameOver = () => {
   //change player
   $("body").on("keydown", (event) => {
     if (event.key === "Escape" && gameData.gameStats.isGameOver) {
+      event.preventDefault();
       resetGame(gameData);
       renderAll(gameData);
       hideGameOver();
@@ -180,6 +183,7 @@ const main = () => {
   // start game
   $("body").on("keydown", (event) => {
     if (event.key === " " && gameData.gameStats.isGameStart === false) {
+      event.preventDefault();
       gameData.gameStats.isGameStart = true;
       hideInputName();
       hideIntro();
@@ -187,7 +191,8 @@ const main = () => {
     }
   });
 
-  $("#ground").on("click", () => {
+  $("#ground").on("click", (event) => {
+    event.preventDefault();
     if (gameData.gameStats.isGameStart === false) {
       gameData.gameStats.isGameStart = true;
       hideInputName();
@@ -197,7 +202,8 @@ const main = () => {
   });
 
   // make hero jump
-  $("#ground").on("click", () => {
+  $("#ground").on("click", (event) => {
+    event.preventDefault();
     if (!gameData.gameStats.isGameOver) {
       jumpUp(gameData.hero);
     }
@@ -205,6 +211,7 @@ const main = () => {
 
   $("body").on("keydown", (event) => {
     if (event.key === " ") {
+      event.preventDefault();
       if (!gameData.gameStats.isGameOver) {
         jumpUp(gameData.hero);
       }
