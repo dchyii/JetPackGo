@@ -1,6 +1,6 @@
-# Running Game
+# JetPack GO
 
-[SEI34 Project 1] Running Game is a side scrolling runner game where the user will control a Hero and guides it to hit targets and avoid obstacles.
+[SEI34 Project 1] Jetpack GO is a side scrolling runner game where the user will control a Hero and guides it to hit targets and avoid obstacles.
 
 ## Game Mechanics
 
@@ -30,7 +30,6 @@ The game will comprise of 3 main elements (to be scalable to include other eleme
 
 - Scroll rate
 
-
 ## User Story
 
 **Introduction**
@@ -40,12 +39,12 @@ The game will comprise of 3 main elements (to be scalable to include other eleme
 
 **Game play**
 
-3. The user should be able to press the spacebar and make the Hero jump. 
+3. The user should be able to press the spacebar and make the Hero jump.
 4. The user should be able to see the obstacles or targets moving across the screen from right to left.
 
 **Game over**
 
-5. The user should be able to see his/her score. 
+5. The user should be able to see his/her score.
 6. If the user's score is within the 3 highest score, the user should be able to see his/her score updated in the high score list.
 
 ## Minimum Viable Product
