@@ -209,6 +209,10 @@ const main = () => {
     }
   });
 
+  $("#ground").on("dblclick", (event) => {
+    event.preventDefault();
+  });
+
   $("body").on("keydown", (event) => {
     if (event.key === " ") {
       event.preventDefault();
